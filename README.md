@@ -1,6 +1,6 @@
 # Cyber-Manager
 
-An Internet café also known as a cybercafé manager made with the Fullstack dApp (Azle + Express + NextJS + ICP)
+An Internet café / cybercafé manager made with the Fullstack dApp (Azle + Express + NextJS + ICP)
 
 **This project is in Alpha stage, it may not be sutable for production yet!**
 
