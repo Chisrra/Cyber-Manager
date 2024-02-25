@@ -80,22 +80,20 @@ You will receive a result similar to the following (ids could be different four 
 ```bash
 URLs:
   Frontend canister via browser
-    frontend: http://127.0.0.1:4943/?canisterId=be2us-64aaa-aaaaa-qaabq-cai
+    frontend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
   Backend canister via Candid interface:
-    backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    backend: http://127.0.0.1:4943/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    internet-identity: http://127.0.0.1:4943/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai&id=be2us-64aaa-aaaaa-qaabq-cai
 ```
 
 Open your web browser and enter the Frontend URL to view the web application in action.
 
-## Test frontend without deploy to ICP Replica
-
-Comment the next line into `frontend/next.config.mjs` file:
+To test frontend without deploy to ICP Replica comment the next line into `frontend/next.config.mjs` file:
 
 ```javascript
 // output: "export",
 ```
-
-Then, navitate to `frontend` folder:
+To run the frontend, navitate to `frontend` folder:
 
 `cd frontend`
 
@@ -103,6 +101,8 @@ Run the following script:
 
 `npm run dev`
 
+Finally open your web browser and try the project on:
+http://localhost:3000/cyber-manager
 
 # Azle Installation 
 
@@ -130,7 +130,4 @@ Fix some dfx errors:
 
 Fix some npm packages errors:
 
-`npm audit fix --force`
-
-
-
+`npm audit fix --force` or `rm -r -d node_modules && npm install`

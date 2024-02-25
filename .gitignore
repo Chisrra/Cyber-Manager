@@ -1,2 +1,15 @@
-.azle/
-.dfx/
+# Node
+node_modules
+
+# Turbo
+.turbo
+
+# VSC
+.vscode
+
+# DFX
+.dfx
+src/declarations
+
+# Azle
+.azle
