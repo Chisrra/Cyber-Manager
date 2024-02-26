@@ -15,7 +15,7 @@ function TimeSelection({ onTimeSelected, onConfirm }: TimeSelectionProps) {
 
   return (
     <div>
-      <label>Select How much time You want to use a computer: </label>
+      <label>Select how much time you want to use a computer: </label>
       <select onChange={handleTimeSelection} style={{ marginRight: "8px" }}>
         <option value={0}>Select</option>
         <option value={1}>1 hour</option>
@@ -29,12 +29,13 @@ function TimeSelection({ onTimeSelected, onConfirm }: TimeSelectionProps) {
             onConfirm();
           }}
           style={{
-            borderRadius: "50%", // Hace que el botón sea circular
-            padding: "10px", // Ajusta el relleno para que se vea mejor
-            backgroundColor: "#4CAF50", // Color de fondo
+            borderRadius: "8px", // Hace que el botón tenga esquinas redondeadas
+            padding: "10px 20px", // Ajusta el relleno para que se vea mejor
+            backgroundColor: "#008CBA", // Color de fondo
             color: "white", // Color del texto
             border: "none", // Quita el borde
             cursor: "pointer", // Cambia el cursor al pasar por encima
+            fontSize: "16px", // Tamaño de la fuente
           }}
         >
           Confirm
@@ -198,9 +199,9 @@ function AuthStatus() {
 
 export default function CyberManagerMain() {
   return (
-    <div>
-      <h1 style={{ color: "#4CAF50" }}>Cyber Manager</h1>
-      <p>This is a CyberCafé Manager</p>
+    <div style={{ textAlign: "center", backgroundColor: "#f2f2f2", padding: "20px" }}>
+      <h1 style={{ color: "#008CBA", fontFamily: "Arial, sans-serif" }}>Cyber Manager</h1>
+      <p style={{ color: "#333", fontFamily: "Helvetica, sans-serif" }}>This is a CyberCafé Manager</p>
       <AuthStatus />
     </div>
   );
