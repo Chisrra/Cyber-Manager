@@ -16,7 +16,7 @@ function TimeSelection({ onTimeSelected, onConfirm }: TimeSelectionProps) {
   return (
     <div>
       <label>Select how much time you want to use a computer: </label>
-      <select onChange={handleTimeSelection} style={{ marginRight: "8px" }}>
+      <select onChange={handleTimeSelection} style={{ marginRight: "8px", fontFamily: "Arial, sans-serif" }}>
         <option value={0}>Select</option>
         <option value={1}>1 hour</option>
         <option value={2}>2 hours</option>
@@ -29,13 +29,15 @@ function TimeSelection({ onTimeSelected, onConfirm }: TimeSelectionProps) {
             onConfirm();
           }}
           style={{
-            borderRadius: "8px", // Hace que el botón tenga esquinas redondeadas
-            padding: "10px 20px", // Ajusta el relleno para que se vea mejor
-            backgroundColor: "#008CBA", // Color de fondo
-            color: "white", // Color del texto
-            border: "none", // Quita el borde
-            cursor: "pointer", // Cambia el cursor al pasar por encima
-            fontSize: "16px", // Tamaño de la fuente
+            borderRadius: "8px",
+            padding: "10px 20px",
+            backgroundColor: "#008CBA",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "16px",
+            fontFamily: "Montserrat, sans-serif", // Utilizando una fuente más moderna
+            fontWeight: "bold", // Añadiendo negrita
           }}
         >
           Confirm
@@ -46,12 +48,12 @@ function TimeSelection({ onTimeSelected, onConfirm }: TimeSelectionProps) {
 }
 
 function calculateFee(selectedTime: number): number {
-  const feePerHour = 5; 
+  const feePerHour = 5;
   return selectedTime * feePerHour;
 }
 
 function calculateTaxes(totalFee: number): number {
-  const taxesPercentage = 16; 
+  const taxesPercentage = 16;
   return (totalFee * taxesPercentage) / 100;
 }
 
@@ -124,7 +126,7 @@ function AuthStatus() {
     let timerId: NodeJS.Timeout;
 
     if (confirmed && selectedTime > 0) {
-      setRemainingTime(selectedTime * 1); // In testing use just seconds
+      setRemainingTime(selectedTime * 1);
 
       timerId = setInterval(() => {
         setRemainingTime((prevRemainingTime) => {
@@ -139,7 +141,7 @@ function AuthStatus() {
       }, 1000);
     }
 
-    return () => clearInterval(timerId); // Cleanup on component unmount or when the timer stops
+    return () => clearInterval(timerId);
   }, [confirmed, selectedTime]);
 
   const handleTimeUp = () => {
@@ -150,11 +152,10 @@ function AuthStatus() {
 
       if (userWantsToContinue) {
         setRemainingTime(selectedTime * 60);
-        setConfirmed(false); // Reset the confirmed state to ask for time again
+        setConfirmed(false);
       } else {
         setConfirmed(false);
         alert(`You chose not to continue using computer number ${computerNumberRef.current}`);
-        // Change the computer number when Cancel is clicked
         computerNumberRef.current = Math.floor(Math.random() * 10) + 1;
       }
     }
@@ -200,8 +201,8 @@ function AuthStatus() {
 export default function CyberManagerMain() {
   return (
     <div style={{ textAlign: "center", backgroundColor: "#f2f2f2", padding: "20px" }}>
-      <h1 style={{ color: "#008CBA", fontFamily: "Arial, sans-serif" }}>Cyber Manager</h1>
-      <p style={{ color: "#333", fontFamily: "Helvetica, sans-serif" }}>This is a CyberCafé Manager</p>
+      <h1 style={{ color: "#008CBA", fontFamily: "Montserrat, sans-serif" }}>Cyber Manager</h1>
+      <p style={{ color: "#333", fontFamily: "Arial, sans-serif" }}>This is a CyberCafé Manager</p>
       <AuthStatus />
     </div>
   );
