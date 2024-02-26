@@ -15,33 +15,15 @@ function TimeSelection({ onTimeSelected, onConfirm }: TimeSelectionProps) {
 
   return (
     <div>
-      <label>Select how much time you want to use a computer: </label>
-      <select onChange={handleTimeSelection} style={{ marginRight: "8px", fontFamily: "Arial, sans-serif" }}>
+      <label>Select How much time You want to use a computer: </label>
+      <select onChange={handleTimeSelection}>
         <option value={0}>Select</option>
         <option value={1}>1 hour</option>
         <option value={2}>2 hours</option>
         <option value={3}>3 hours</option>
       </select>
       {selectedTime > 0 && (
-        <button
-          onClick={() => {
-            onTimeSelected(selectedTime);
-            onConfirm();
-          }}
-          style={{
-            borderRadius: "8px",
-            padding: "10px 20px",
-            backgroundColor: "#008CBA",
-            color: "white",
-            border: "none",
-            cursor: "pointer",
-            fontSize: "16px",
-            fontFamily: "Montserrat, sans-serif", // Utilizando una fuente más moderna
-            fontWeight: "bold", // Añadiendo negrita
-          }}
-        >
-          Confirm
-        </button>
+        <button onClick={() => { onTimeSelected(selectedTime); onConfirm(); }}>Confirm</button>
       )}
     </div>
   );
@@ -169,8 +151,8 @@ function AuthStatus() {
   const handleComputerSelection = async (e: ChangeEvent<HTMLSelectElement>) => {
     const computerId = Number(e.target.value);
     setComputerNumber(computerId);
-
-
+    
+    
     try {
       console.log('Data:', process.env.NEXT_PUBLIC_API_REST_URL);
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_REST_URL}/computers`, {
@@ -185,6 +167,7 @@ function AuthStatus() {
       }
     } catch (error) {
       console.error('Error:', error);
+      alert("Error" + error);
       // Handle error if the request fails
     }
   };
@@ -234,11 +217,12 @@ function AuthStatus() {
   );
 }
 
+
 export default function CyberManagerMain() {
   return (
-    <div style={{ textAlign: "center", backgroundColor: "#f2f2f2", padding: "20px" }}>
-      <h1 style={{ color: "#008CBA", fontFamily: "Montserrat, sans-serif" }}>Cyber Manager</h1>
-      <p style={{ color: "#333", fontFamily: "Arial, sans-serif" }}>This is a CyberCafé Manager</p>
+    <div>
+      <h1>Cyber Manager</h1>
+      <p>This is a CyberCafé Manager</p>
       <AuthStatus />
     </div>
   );
