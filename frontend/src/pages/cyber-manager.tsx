@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, ChangeEvent } from "react";
 import { AuthButton, useAuth } from "@bundly/ic-react";
-//hola
+
 interface TimeSelectionProps {
   onTimeSelected: (selectedTime: number) => void;
   onConfirm: () => void;
@@ -16,14 +16,29 @@ function TimeSelection({ onTimeSelected, onConfirm }: TimeSelectionProps) {
   return (
     <div>
       <label>Select How much time You want to use a computer: </label>
-      <select onChange={handleTimeSelection}>
+      <select onChange={handleTimeSelection} style={{ marginRight: "8px" }}>
         <option value={0}>Select</option>
         <option value={1}>1 hour</option>
         <option value={2}>2 hours</option>
         <option value={3}>3 hours</option>
       </select>
       {selectedTime > 0 && (
-        <button onClick={() => { onTimeSelected(selectedTime); onConfirm(); }}>Confirm</button>
+        <button
+          onClick={() => {
+            onTimeSelected(selectedTime);
+            onConfirm();
+          }}
+          style={{
+            borderRadius: "50%", // Hace que el botón sea circular
+            padding: "10px", // Ajusta el relleno para que se vea mejor
+            backgroundColor: "#4CAF50", // Color de fondo
+            color: "white", // Color del texto
+            border: "none", // Quita el borde
+            cursor: "pointer", // Cambia el cursor al pasar por encima
+          }}
+        >
+          Confirm
+        </button>
       )}
     </div>
   );
@@ -108,9 +123,7 @@ function AuthStatus() {
     let timerId: NodeJS.Timeout;
 
     if (confirmed && selectedTime > 0) {
-      //setRemainingTime(selectedTime * 60 * 60); // Convert hours to seconds
       setRemainingTime(selectedTime * 1); // In testing use just seconds
-
 
       timerId = setInterval(() => {
         setRemainingTime((prevRemainingTime) => {
@@ -186,7 +199,7 @@ function AuthStatus() {
 export default function CyberManagerMain() {
   return (
     <div>
-      <h1>Cyber Manager</h1>
+      <h1 style={{ color: "#4CAF50" }}>Cyber Manager</h1>
       <p>This is a CyberCafé Manager</p>
       <AuthStatus />
     </div>
