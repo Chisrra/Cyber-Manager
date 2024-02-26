@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, ChangeEvent } from "react";
 import { AuthButton, useAuth } from "@bundly/ic-react";
-
+//hola
 interface TimeSelectionProps {
   onTimeSelected: (selectedTime: number) => void;
   onConfirm: () => void;
